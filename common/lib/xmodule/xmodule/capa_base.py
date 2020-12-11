@@ -459,6 +459,18 @@ class CapaMixin(ScorableXBlockMixin, CapaFields):
                 u'Contact course staff in the discussion forum for assistance.</p>'
             )
 
+    def block_is_complete(self):
+        """
+        Returns a boolean if the block is complete according to the completion service.
+        If the completion service is not enabled, defaults to False.
+        """
+        completion_service = self.runtime.service(self, 'completion')
+        if completion_service.completion_tracking_enabled():
+            completion_dict = completion_service.get_completions([self.location])
+            return completion_dict[self.location] == 1.0
+        return False
+
+
     def submit_button_name(self):
         """
         Determine the name for the "submit" button.
@@ -741,7 +753,7 @@ class CapaMixin(ScorableXBlockMixin, CapaFields):
         if not should_enable_submit_button:
             cta_service = self.runtime.service(self, "call_to_action")
             if cta_service:
-                submit_disabled_ctas = cta_service.get_ctas(self, 'capa_submit_disabled')
+                submit_disabled_ctas = cta_service.get_ctas(self, 'capa_submit_disabled', self.block_is_complete())
 
         content = {
             'name': self.display_name_with_default,
