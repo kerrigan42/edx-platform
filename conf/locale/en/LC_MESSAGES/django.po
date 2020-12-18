@@ -10158,6 +10158,7 @@ msgstr ""
 msgid "Public Username"
 msgstr ""
 
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Phone number"
 msgstr ""
 
