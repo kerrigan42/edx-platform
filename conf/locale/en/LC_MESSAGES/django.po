@@ -10158,6 +10158,9 @@ msgstr ""
 msgid "Public Username"
 msgstr ""
 
+msgid "Phone number"
+msgstr ""
+
 #. Translators: These instructions appear on the registration form,
 #. immediately
 #. below a field meant to hold the user's public username.
