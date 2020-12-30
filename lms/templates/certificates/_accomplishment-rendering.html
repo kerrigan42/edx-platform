@@ -5,6 +5,42 @@
 course_mode_class = course_mode if course_mode else ''
 %>
 
+<main class="accomplishment accomplishment-main">
+    <div class="wrapper-accomplishment-rendering">
+        <div class="certificate certificate-lg certificate-html ">
+            <div class="background">
+                <img src="https://robbo-course.spbpu.com/media/certificate_template_assets/1/cerf.jpg" alt="Course tmpl">
+            </div>
+            <div class="background_title">
+                <img src="https://robbo-course.spbpu.com/media/certificate_template_assets/2/cerf_text.png" alt="Certificate ru tmpl">
+            </div>
+            <div class="ceo_summary">
+                <div class="ceo_summary">${accomplishment_copy_description_full}</div>
+            </div>
+            <div class="name">${accomplishment_copy_name}</div>
+            <div class="title">${accomplishment_copy_course_name}</div>
+
+            % if certificate_data:
+            % for signatory in certificate_data.get('signatories', []):
+            <div class="ceo_title">
+                <div class="ceo_position">${signatory['title']}</div>
+                <div class="ceo_name">${signatory['name']}</div>
+            </div>
+            % endfor
+            % endif
+            <div class="ceo_logo">
+                <div class="logo">ROBBO</div>
+            </div>
+            <div class="date_number text-dark">
+                <div class="release_date">${certificate_date_issued}</div>
+            </div>
+            <div class="date_certificate text-dark">
+                <div class="number">№ ${certificate_id_number}</div>
+            </div>
+        </div>
+    </div>
+</main>
+
 <main class="accomplishment accomplishment-main" style="display: none">
 
     <div class="wrapper-accomplishment-rendering">
@@ -111,37 +147,6 @@ course_mode_class = course_mode if course_mode else ''
                     <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
                     <dd class="value copy copy-base">${certificate_date_issued}</dd>
                 </dl>
-            </div>
-        </div>
-    </div>
-</main>
-
-<main class="accomplishment accomplishment-main">
-    <div class="wrapper-accomplishment-rendering">
-        <div class="certificate certificate-lg certificate-html ">
-            <div class="background">
-                <img src="https://robbo-course.spbpu.com/media/certificate_template_assets/1/cerf.jpg" alt="Course tmpl">
-            </div>
-            <div class="background_title">
-                <img src="https://robbo-course.spbpu.com/media/certificate_template_assets/2/cerf_text.png" alt="Certificate ru tmpl">
-            </div>
-            <div class="ceo_summary">
-                <div class="ceo_summary">${accomplishment_copy_description_full}</div>
-            </div>
-            <div class="name">${accomplishment_copy_name}</div>
-            <div class="title">${accomplishment_copy_course_name}</div>
-            <div class="ceo_title">
-                <div class="ceo_position">${signatory['title']}</div>
-                <div class="ceo_name">${signatory['name']}</div>
-            </div>
-            <div class="ceo_logo">
-                <div class="logo">ROBBO</div>
-            </div>
-            <div class="date_number text-dark">
-                <div class="release_date">${certificate_date_issued}</div>
-            </div>
-            <div class="date_certificate text-dark">
-                <div class="number">№ ${certificate_id_number}</div>
             </div>
         </div>
     </div>
